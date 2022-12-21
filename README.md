@@ -74,4 +74,4 @@ Where the class representing a Row of data looks something like this:
         }
     }
 
-Hope this helps get you closer to your intended outcome.
+This is "just one way" to do it, but I [tested](https://github.com/IVSoftware/datagrid-view-sort.git) it and it works. Hope this helps get you closer to your intended outcome.

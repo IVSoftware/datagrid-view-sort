@@ -11,7 +11,7 @@ namespace datagrid_view_sort
         {
             base.OnLoad(e);
             // Populate the combo box
-            comboBoxSearch.Items.AddRange(Enum.GetValues(typeof(ApplianceType)).Cast<object>().ToArray());
+            object[] values = Enum.GetValues(typeof(ApplianceType)).Cast<object>().ToArray();
             dtgridappliance.DataSource = Appliances;
             dtgridappliance.AllowUserToAddRows = false;
 
@@ -25,7 +25,9 @@ namespace datagrid_view_sort
             // Format columns
             dtgridappliance.Columns[nameof(Appliance.Name)].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            // Add a handler for when the combo box xhanges
+            // Add a handler for when the combo box changes
+            comboBoxSearch.Items.AddRange(values);
+            comboBoxSearch.SelectedIndex = (int)ApplianceType.Refrigerator;
             comboBoxSearch.SelectionChangeCommitted += onSearchByApplianceType;
         }
 

@@ -43,14 +43,14 @@
             this.dtgridappliance.Size = new System.Drawing.Size(478, 204);
             this.dtgridappliance.TabIndex = 0;
             // 
-            // comboBox1
+            // comboBoxSearch
             // 
+            this.comboBoxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSearch.FormattingEnabled = true;
             this.comboBoxSearch.Location = new System.Drawing.Point(4, 4);
-            this.comboBoxSearch.Name = "comboBox1";
+            this.comboBoxSearch.Name = "comboBoxSearch";
             this.comboBoxSearch.Size = new System.Drawing.Size(182, 33);
             this.comboBoxSearch.TabIndex = 1;
-            this.comboBoxSearch.Text = "Select";
             // 
             // MainForm
             // 
