@@ -20,6 +20,7 @@ For starters, the DGV can be completely set up using ~10 lines in the `OnLoad` o
             Appliances.Add(new Appliance(ApplianceType.Microwave, "Amana" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Samsung" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Whirlpool" ));
+            dtgridappliance.AllowUserToAddRows = false;
             // Format columns
             dtgridappliance.Columns[nameof(Appliance.Name)].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 

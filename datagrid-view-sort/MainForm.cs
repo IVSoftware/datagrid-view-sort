@@ -13,12 +13,12 @@ namespace datagrid_view_sort
 
             // Set up the DGV and add a few appliances.
             dtgridappliance.DataSource = Appliances;
-            dtgridappliance.AllowUserToAddRows = false;
             Appliances.Add(new Appliance(ApplianceType.Refrigerator, "Maytag" ));
             Appliances.Add(new Appliance(ApplianceType.Refrigerator, "LG" ));
             Appliances.Add(new Appliance(ApplianceType.Microwave, "Amana" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Whirlpool" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Samsung" ));
+            dtgridappliance.AllowUserToAddRows = false;
             // Format columns
             dtgridappliance.Columns[nameof(Appliance.Name)].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
