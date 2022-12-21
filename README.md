@@ -1,4 +1,8 @@
-Your [question](https://stackoverflow.com/q/74873611/5438626) is **How to bring rows with search results on top in the datagridview** and your current approach is attempting to use [DataGridView.Sort](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.datagridview.sort?view=windowsdesktop-7.0#system-windows-forms-datagridview-sort(system-collections-icomparer)) to work with the UI control directly. With `DataGridView` it's often easier to achieve your desired outcome by setting the `DataSource` property (in this case, a `BindingList<Appliance>`) and working with that list instead. For starters, the DGV can be completely set up using <10 lines in the `OnLoad` of the mainform. 
+Your [question](https://stackoverflow.com/q/74873611/5438626) is **How to bring rows with search results on top in the datagridview** and your current approach is attempting to use [DataGridView.Sort](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.datagridview.sort?view=windowsdesktop-7.0#system-windows-forms-datagridview-sort(system-collections-icomparer)) to work with the UI control directly. 
+
+If you're open to doing this another way, with `DataGridView` it's often easier to achieve your desired outcome by setting the `DataSource` property (in this case, a `BindingList<Appliance>`) and working with that list instead.
+
+For starters, the DGV can be completely set up using ~10 lines in the `OnLoad` of the main form. 
 
     public partial class MainForm : Form
     {
@@ -42,9 +46,10 @@ Where the class representing a Row of data looks something like this:
         public string Name { get; private set; }
     }
 
+[![datagridview with sort][1]][1]
  ***
 
- Now you just need a way to compare a given `Appliance` to the type selected in the combo box: 
+The sort requires a way to compare a given `Appliance` to the type selected in the combo box: 
 
     private int compareToSelectedType(Appliance appliance)
     {
@@ -54,7 +59,7 @@ Where the class representing a Row of data looks something like this:
 
  ***
 
- Now, when the combo box changes, you can remove all the DataGridView items and put them back in a different order.
+Now, when the combo box changes, you can remove all the DataGridView items and put them back in a different order.
 
     private void onSearchByApplianceType(object? sender, EventArgs e)
     {
@@ -74,4 +79,7 @@ Where the class representing a Row of data looks something like this:
         }
     }
 
-This is "just one way" to do it, but I [tested](https://github.com/IVSoftware/datagrid-view-sort.git) it and it works. Hope this helps get you closer to your intended outcome.
+This is "just one way" to do it. Hope this helps get you closer to your intended outcome.
+
+
+  [1]: https://i.stack.imgur.com/zxm9U.png
