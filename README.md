@@ -66,6 +66,7 @@ Now, when the combo box changes, you can remove all the DataGridView items and p
         var tmp = new List<Appliance>(
             Appliances
             .OrderBy(_=>compareToSelectedType(_))
+            .ThenBy(_ => _.ApplianceType)
             .ThenBy(_=>_.Name));
 
         // Remove all items from the DataGridView
