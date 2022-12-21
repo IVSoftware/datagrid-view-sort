@@ -17,8 +17,8 @@ namespace datagrid_view_sort
             Appliances.Add(new Appliance(ApplianceType.Refrigerator, "Maytag" ));
             Appliances.Add(new Appliance(ApplianceType.Refrigerator, "LG" ));
             Appliances.Add(new Appliance(ApplianceType.Microwave, "Amana" ));
-            Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Samsung" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Whirlpool" ));
+            Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Samsung" ));
             // Format columns
             dtgridappliance.Columns[nameof(Appliance.Name)].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -35,6 +35,7 @@ namespace datagrid_view_sort
             var tmp = new List<Appliance>(
                 Appliances
                 .OrderBy(_=>compareToSelectedType(_))
+                .ThenBy(_ => _.ApplianceType)
                 .ThenBy(_=>_.Name));
 
             // Remove all items from the DataGridView
