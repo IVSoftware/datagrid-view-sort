@@ -10,22 +10,20 @@ namespace datagrid_view_sort
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            // Populate the combo box
-            object[] values = Enum.GetValues(typeof(ApplianceType)).Cast<object>().ToArray();
+
+            // Set up the DGV and add a few appliances.
             dtgridappliance.DataSource = Appliances;
             dtgridappliance.AllowUserToAddRows = false;
-
-            // Add some appliances
             Appliances.Add(new Appliance(ApplianceType.Refrigerator, "Maytag" ));
             Appliances.Add(new Appliance(ApplianceType.Refrigerator, "LG" ));
             Appliances.Add(new Appliance(ApplianceType.Microwave, "Amana" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Samsung" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Whirlpool" ));
-
             // Format columns
             dtgridappliance.Columns[nameof(Appliance.Name)].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            // Add a handler for when the combo box changes
+            // Populate the combo box and dd a handler for when the combo box changes
+            object[] values = Enum.GetValues(typeof(ApplianceType)).Cast<object>().ToArray();
             comboBoxSearch.Items.AddRange(values);
             comboBoxSearch.SelectedIndex = (int)ApplianceType.Refrigerator;
             comboBoxSearch.SelectionChangeCommitted += onSearchByApplianceType;

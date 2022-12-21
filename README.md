@@ -13,21 +13,20 @@ For starters, the DGV can be completely set up using ~10 lines in the `OnLoad` o
             base.OnLoad(e);
 
             // Set up the DGV and add a few appliances.
-            dtgridappliance.DataSource = Appliances;            
+            dtgridappliance.DataSource = Appliances;
+            dtgridappliance.AllowUserToAddRows = false;
             Appliances.Add(new Appliance(ApplianceType.Refrigerator, "Maytag" ));
             Appliances.Add(new Appliance(ApplianceType.Refrigerator, "LG" ));
             Appliances.Add(new Appliance(ApplianceType.Microwave, "Amana" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Samsung" ));
             Appliances.Add(new Appliance(ApplianceType.Dishwasher, "Whirlpool" ));
             // Format columns
-            dtgridappliance
-            .Columns[nameof(Appliance.Name)]
-            .AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dtgridappliance.Columns[nameof(Appliance.Name)].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            // Populate the combo box and add a handler for when the combo box xhanges
-            comboBoxSearch
-            .Items
-            .AddRange(Enum.GetValues(typeof(ApplianceType)).Cast<object>().ToArray());
+            // Populate the combo box and dd a handler for when the combo box changes
+            object[] values = Enum.GetValues(typeof(ApplianceType)).Cast<object>().ToArray();
+            comboBoxSearch.Items.AddRange(values);
+            comboBoxSearch.SelectedIndex = (int)ApplianceType.Refrigerator;
             comboBoxSearch.SelectionChangeCommitted += onSearchByApplianceType;
         }
     }
